@@ -25,19 +25,19 @@ public class Dinosaur2Move : MonoBehaviour {
             gameSpeed = gameSpeed * 2;
             }
         }
-        if (Input.GetKey (KeyCode.D))
+        if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector2.right * gameSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector2.left * gameSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector2.up * gameSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector2.down * gameSpeed * Time.deltaTime);
         }
