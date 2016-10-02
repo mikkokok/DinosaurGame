@@ -45,8 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Background.cs" />
+     <Compile Include="Assets\CoinCounter.cs" />
+     <Compile Include="Assets\CoinHandle.cs" />
      <Compile Include="Assets\Scripts\Dinosaur2Move.cs" />
      <Compile Include="Assets\Scripts\DinosaurGirl.cs" />
+     <Compile Include="Assets\UpdateInfo.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
