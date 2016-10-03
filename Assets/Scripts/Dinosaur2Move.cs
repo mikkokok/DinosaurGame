@@ -1,28 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Dinosaur2Move : MonoBehaviour {
 
-    private float gameSpeed = 5;
+    private float gameSpeed = 10;
     private float maxSpeed = 30;
-	// Use this for initialization
-	void Start ()
+    private bool isGrounded = true;
+    Rigidbody2D body;
+    // Use this for initialization
+    void Start ()
     {
-	
+        body = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         Movement();
-        gameSpeed = 5;
+        gameSpeed = 10;
 	}
     void Movement()
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             if (gameSpeed < maxSpeed) { 
-            gameSpeed = gameSpeed * 3;
+            gameSpeed = gameSpeed * 2;
             }
         }
         if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -35,8 +38,8 @@ public class Dinosaur2Move : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector2.up * gameSpeed * Time.deltaTime * 2);
-         }
+            transform.Translate(Vector2.up * gameSpeed * Time.deltaTime * 4);
+        }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector2.down * gameSpeed * Time.deltaTime);
@@ -48,6 +51,7 @@ public class Dinosaur2Move : MonoBehaviour {
     } // movement
     void OnCollisionEnter2D(Collision2D col)
     {
+        isGrounded = true;
         if (col.gameObject.tag == "Finish")
         {
             endgame("You win! Press esc to quit");
@@ -64,5 +68,4 @@ public class Dinosaur2Move : MonoBehaviour {
         UpdateInfo.game_end = true;
         UpdateInfo.UpdateText(input);
     }
-
 }
