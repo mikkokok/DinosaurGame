@@ -4,8 +4,9 @@ using System;
 
 public class Dinosaur2Move : MonoBehaviour {
 
-    private float gameSpeed = 10;
-    private float maxSpeed = 30;
+    private float gameSpeed = 100;
+    private float maxSpeed = 40;
+    private float maxSpeedMultiplier = 2;
     private bool isGrounded = true;
     Rigidbody2D body;
     // Use this for initialization
@@ -18,14 +19,14 @@ public class Dinosaur2Move : MonoBehaviour {
 	void Update ()
     {
         Movement();
-        gameSpeed = 10;
+        gameSpeed = 100;
 	}
     void Movement()
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            if (gameSpeed < maxSpeed) { 
-            gameSpeed = gameSpeed * 2;
+            if (gameSpeed < (gameSpeed * maxSpeedMultiplier)) {
+                gameSpeed = gameSpeed* maxSpeedMultiplier;
             }
         }
         if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -36,13 +37,20 @@ public class Dinosaur2Move : MonoBehaviour {
         {
             transform.Translate(Vector2.left * gameSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded)
         {
-            transform.Translate(Vector2.up * gameSpeed * Time.deltaTime * 4);
+            if (isGrounded)
+            {
+                isGrounded = false;
+                body.AddForce(new Vector2(0, 180), ForceMode2D.Impulse);
+            }
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector2.down * gameSpeed * Time.deltaTime);
+            if (isGrounded)
+            {
+                transform.Translate(Vector2.down * gameSpeed * Time.deltaTime);
+            }
         }
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -57,10 +65,10 @@ public class Dinosaur2Move : MonoBehaviour {
             endgame("You win! Press esc to quit");
             //Debug.Log("You win!");
         }
-        if (col.gameObject.tag == "Border")
+        if (col.gameObject.tag == "Border" || col.gameObject.tag == "Car")
         {
             endgame("You lose! Press esc to quit");
-            //Debug.Log("You win!");
+            Debug.Log("You lose");
         }
     }
     private void endgame (string input)
