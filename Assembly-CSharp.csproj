@@ -48,6 +48,7 @@
      <Compile Include="Assets\Background.cs" />
      <Compile Include="Assets\CoinCounter.cs" />
      <Compile Include="Assets\CoinHandle.cs" />
+     <Compile Include="Assets\MoveCar.cs" />
      <Compile Include="Assets\Scripts\Dinosaur2Move.cs" />
      <Compile Include="Assets\Scripts\DinosaurGirl.cs" />
      <Compile Include="Assets\UpdateInfo.cs" />
