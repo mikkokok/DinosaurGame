@@ -9,23 +9,22 @@ public class Dinosaur2Move : MonoBehaviour
     private float maxSpeed = 40;
     private float maxSpeedMultiplier = 2;
     private bool isGrounded = true;
-    private bool isIdle = true; // Assume player is not moving
     private bool isFacingRight = true; // Assume player is facing right
     private int returnAnimRate = 3; // How many frames before animation stops
-    private Animator animation;
+    private Animator animations;
     Rigidbody2D body;
 
     // Use this for initialization
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        animation = GetComponent<Animator>();
+        animations = GetComponent<Animator>();
+        isFacing("right");
     }
 
     // Update is called once per frame
     void Update()
     {
-        isIdle = true;
         Movement();
         gameSpeed = 100;
         returnAnimRate--;
@@ -49,14 +48,14 @@ public class Dinosaur2Move : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector2.right * gameSpeed * Time.deltaTime);
-            isFacingRight = true;
+            isFacing("right");
             setAnim("IsRunningRight");
         }
         // Walking/running left
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector2.left * gameSpeed * Time.deltaTime);
-            isFacingRight = false;
+            isFacing("left");
             setAnim("IsRunningLeft");
         }
         // Jumping 
@@ -119,17 +118,31 @@ public class Dinosaur2Move : MonoBehaviour
     }
     private void setIdle()
     {
-        animation.SetBool("IsRunningRight", false);
-        animation.SetBool("IsRunningLeft", false);
-        animation.SetBool("IsJumpingRight", false);
-        animation.SetBool("IsJumpingLeft", false);
+        animations.SetBool("IsRunningRight", false);
+        animations.SetBool("IsRunningLeft", false);
+        animations.SetBool("IsJumpingRight", false);
+        animations.SetBool("IsJumpingLeft", false);
     }
     // Helper method to set animation and attempt to reduce copying code all over
     private void setAnim(string anim)
     {
         setIdle();
         returnAnimRate = 3;
-        animation.SetBool(anim, true);
+        animations.SetBool(anim, true);
+    }
+    // Method for changing idle state
+    private void isFacing(string facing)
+    {
+        if (facing == "right")
+        {
+            isFacingRight = true;
+            animations.SetBool("IsFaceToRight", true);
+        }
+        if (facing == "left")
+        {
+            isFacingRight = false;
+            animations.SetBool("IsFaceToRight", false);
+        }
     }
 
 }
