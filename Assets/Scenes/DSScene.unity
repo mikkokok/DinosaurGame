@@ -1116,9 +1116,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -25.42549, y: -0.688086}
+  m_Offset: {x: -25.461536, y: -0.688086}
   serializedVersion: 2
-  m_Size: {x: 0.9939128, y: 13.43003}
+  m_Size: {x: 0.92178595, y: 13.43003}
 --- !u!1 &412118079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,8 +4997,9 @@ GameObject:
   - 50: {fileID: 1613062754}
   - 114: {fileID: 1613062755}
   - 114: {fileID: 1613062756}
+  - 95: {fileID: 1613062757}
   m_Layer: 0
-  m_Name: Dinosaur2
+  m_Name: Dinosaur
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5104,6 +5105,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97dd40b0ec987945bea63d2ece0b3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1613062757
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613062750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6d3bc14be3857c4f8a42d2e40e78a72, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1772623640
 GameObject:
   m_ObjectHideFlags: 0
