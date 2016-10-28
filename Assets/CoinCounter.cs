@@ -26,7 +26,7 @@ public static void Losecoin (){
 		coincount = coincount -1;
 	}
 	public static void Losecoin (int m){
-		if(coincount - m < 0){
+		if((coincount - m) < 0){
 			coincount = 0;
 		}
 		else coincount = coincount -m;
