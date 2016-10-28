@@ -11,10 +11,15 @@ public class CoinCounter : MonoBehaviour
         //Debug.Log("coincount: "+coincount ); // For debugging
         if (coincount == 10)
         {
-            Destroy(GameObject.FindWithTag ("Car"));
+           Destroy(GameObject.FindWithTag ("Car"));
         }
     }
-	public static void Losecoin (){
+
+public static void AddSilvercoin () {
+	coincount = coincount + 5;
+	}
+
+public static void Losecoin (){
 		if(coincount == 0) return;
 		coincount = coincount -1;
 	}
