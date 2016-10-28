@@ -16,7 +16,9 @@ public class CoinCounter : MonoBehaviour
     }
 
 public static void AddSilvercoin () {
-	coincount = coincount + 5;
+	for(int i =0; i<5;i++){
+		this.Addcoin();
+		}
 	}
 
 public static void Losecoin (){
