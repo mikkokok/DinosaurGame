@@ -6,7 +6,7 @@ public class Dinosaur2Move : MonoBehaviour
 {
 
     private float gameSpeed = 100;
-    private float maxSpeed = 40;
+    //private float maxSpeed = 40;
     private float maxSpeedMultiplier = 2;
     private bool isGrounded = true;
     private bool isFacingRight = true; // Assume player is facing right
@@ -59,15 +59,13 @@ public class Dinosaur2Move : MonoBehaviour
             setAnim("IsRunningLeft");
         }
         // Jumping 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isGrounded)
         {
-            if (isGrounded)
-            {
                 setIdle();
                 returnAnimRate = 3;
                 isGrounded = false;
                 body.AddForce(new Vector2(0, 180), ForceMode2D.Impulse);
-            }
+                GameObject.Find("jump").GetComponent<AudioSource>().Play();
         }
         // Going down
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
