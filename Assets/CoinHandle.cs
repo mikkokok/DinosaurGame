@@ -7,6 +7,7 @@ public class CoinHandle : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
+            GameObject.Find("coinssound").GetComponent<AudioSource>().Play();
             Destroy(gameObject);
             //Debug.Log("Coin found"); // For debugging
             CoinCounter.Addcoin();
