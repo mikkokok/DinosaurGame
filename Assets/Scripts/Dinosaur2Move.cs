@@ -61,11 +61,11 @@ public class Dinosaur2Move : MonoBehaviour
         // Jumping 
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isGrounded)
         {
-                setIdle();
-                returnAnimRate = 3;
-                isGrounded = false;
-                body.AddForce(new Vector2(0, 180), ForceMode2D.Impulse);
-                GameObject.Find("jump").GetComponent<AudioSource>().Play();
+            setIdle();
+            returnAnimRate = 3;
+            isGrounded = false;
+            body.AddForce(new Vector2(0, 180), ForceMode2D.Impulse);
+            GameObject.Find("jump").GetComponent<AudioSource>().Play();
         }
         // Going down
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
@@ -93,7 +93,7 @@ public class Dinosaur2Move : MonoBehaviour
         {
             Application.Quit();
         }
-        
+
     } // movement
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -103,10 +103,18 @@ public class Dinosaur2Move : MonoBehaviour
             endgame("You win! Press esc to quit");
             //Debug.Log("You win!");
         }
-        if (col.gameObject.tag == "Border" || col.gameObject.tag == "Car")
+        if (col.gameObject.tag == "Car")
         {
             endgame("You lose! Press esc to quit");
             Debug.Log("You lose");
+        }
+        if (col.gameObject.tag == "Candy")
+        {
+            CoinCounter.AddCandy();
+        }
+        if (col.gameObject.tag == "Spikes")
+        {
+            CoinCounter.ReduceCandy();
         }
     }
     private void endgame(string input)

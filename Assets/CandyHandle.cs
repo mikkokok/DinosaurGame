@@ -9,7 +9,6 @@ public class CandyHandle : MonoBehaviour {
         {
             Destroy(gameObject);
             //Debug.Log("Coin found"); // For debugging
-            CoinCounter.Addcoin();
         }
     }
 }

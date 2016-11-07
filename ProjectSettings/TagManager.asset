@@ -8,6 +8,9 @@ TagManager:
   - Player_info
   - Border
   - Coin
+  - Spikes
+  - Candy
+  - Text
   layers:
   - Default
   - TransparentFX

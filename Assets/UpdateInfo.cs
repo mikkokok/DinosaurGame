@@ -3,26 +3,31 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class UpdateInfo : MonoBehaviour {
+public class UpdateInfo : MonoBehaviour
+{
 
     public static Text text;
     public static bool game_end = false;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         text = GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        text.text = "Coins: " + CoinCounter.GetCoin() + "Candies: " + CoinCounter.GetCandy();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (game_end != true)
         {
             UpdateText();
         }
     }
-
-    private static void UpdateText()
+    public static void UpdateText()
     {
-        text.text = "Coins: " + CoinCounter.GetCoin();
+        // Debug.Log("Text updating");
+        text.text = "Coins: " + CoinCounter.GetCoin() + " Candies: " + CoinCounter.GetCandy();
     }
     public static void UpdateText(string endgame)
     {

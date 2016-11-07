@@ -4,7 +4,8 @@ using System.Collections;
 public class CoinCounter : MonoBehaviour
 {
 
-    public static int coincount;
+    public static int coincount = 0;
+    public static int candycount = 3;
 
 
     public static void Addcoin()
@@ -18,9 +19,18 @@ public class CoinCounter : MonoBehaviour
     }
     public static void AddCandy()
     {
+        candycount++;
         Debug.Log("Candy collected"); // For debugging
     }
-
+    public static void ReduceCandy()
+    {
+        candycount--;
+        Debug.Log("Candy reduced"); // For debugging
+    }
+    public static string GetCandy()
+    {
+        return candycount.ToString();
+    }
     public static void AddSilvercoin()
     {
         for (int i = 0; i < 5; i++)
