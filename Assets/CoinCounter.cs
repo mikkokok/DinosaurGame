@@ -25,7 +25,11 @@ public class CoinCounter : MonoBehaviour
     public static void ReduceCandy()
     {
         candycount--;
-        Debug.Log("Candy reduced"); // For debugging
+        if (candycount <= 0)
+        {
+            Dinosaur2Move.endgame("All candies lost, you lose :(");
+        }
+        Debug.Log("Candy reduced: amount "+candycount); // For debugging
     }
     public static string GetCandy()
     {

@@ -11,6 +11,8 @@ public class Dinosaur2Move : MonoBehaviour
     private bool isGrounded = true;
     private bool isFacingRight = true; // Assume player is facing right
     private int returnAnimRate = 3; // How many frames before animation stops
+    private int spiketimer = 5; // How many frames before reducing candy again
+    public static bool game_is_on = true; // Game is truly running at the start
     private Animator animations;
     Rigidbody2D body;
 
@@ -25,7 +27,9 @@ public class Dinosaur2Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (game_is_on) { 
         Movement();
+        }
         gameSpeed = 100;
         returnAnimRate--;
         if (returnAnimRate == 0)
@@ -97,7 +101,11 @@ public class Dinosaur2Move : MonoBehaviour
     } // movement
     void OnCollisionEnter2D(Collision2D col)
     {
-        isGrounded = true;
+        if (col.gameObject.tag == "Border")
+        {
+            isGrounded = true;
+            spiketimer = 20;
+        }
         if (col.gameObject.tag == "Finish")
         {
             endgame("You win! Press esc to quit");
@@ -114,11 +122,18 @@ public class Dinosaur2Move : MonoBehaviour
         }
         if (col.gameObject.tag == "Spikes")
         {
+            isGrounded = true;
+            spiketimer--;
+            Debug.Log("Spiketimer: "+spiketimer);
+            if (spiketimer <= 0) { 
             CoinCounter.ReduceCandy();
+            spiketimer = 20;
+            }
         }
     }
-    private void endgame(string input)
+    public static void endgame(string input)
     {
+        game_is_on = false;
         UpdateInfo.game_end = true;
         UpdateInfo.UpdateText(input);
     }
