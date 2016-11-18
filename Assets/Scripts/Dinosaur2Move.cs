@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 
@@ -36,9 +36,9 @@ public class Dinosaur2Move : MonoBehaviour
         {
             setIdle();
         }
-        if (spiketimer > 0) {
-        spiketimer--;
-        }
+	   if (spiketimer > 0){
+		spiketimer--;
+		}
     }
 
     void Movement()
@@ -123,6 +123,16 @@ public class Dinosaur2Move : MonoBehaviour
         {
             CoinCounter.AddCandy();
         }
+	   if (col.gameObject.tag == "Mushroom")
+        {
+		 Debug.Log("Spiketimer: "+spiketimer);
+            if (spiketimer <= 0) { 
+            CoinCounter.ReduceCandy();
+            spiketimer = 20;
+            }
+
+        }
+
         if (col.gameObject.tag == "Spikes")
         {
             isGrounded = true;
