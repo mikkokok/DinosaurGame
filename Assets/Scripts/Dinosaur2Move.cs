@@ -36,6 +36,9 @@ public class Dinosaur2Move : MonoBehaviour
         {
             setIdle();
         }
+        if (spiketimer > 0) {
+        spiketimer--;
+        }
     }
 
     void Movement()
@@ -123,7 +126,6 @@ public class Dinosaur2Move : MonoBehaviour
         if (col.gameObject.tag == "Spikes")
         {
             isGrounded = true;
-            spiketimer--;
             Debug.Log("Spiketimer: "+spiketimer);
             if (spiketimer <= 0) { 
             CoinCounter.ReduceCandy();
