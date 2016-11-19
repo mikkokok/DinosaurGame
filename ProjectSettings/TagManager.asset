@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Car
+  - Tree
   - Player_info
   - Border
   - Coin
   - Spikes
   - Candy
   - Text
+  - Mushroom
+  - Car
   layers:
   - Default
   - TransparentFX
