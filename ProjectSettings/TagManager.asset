@@ -12,7 +12,10 @@ TagManager:
   - Candy
   - Text
   - Mushroom
+<<<<<<< HEAD
   - Car
+=======
+>>>>>>> origin/master
   layers:
   - Default
   - TransparentFX
