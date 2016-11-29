@@ -19,3 +19,4 @@ public class MoveCar : MonoBehaviour {
             dir = dir * -1;
 }
 }
+}
