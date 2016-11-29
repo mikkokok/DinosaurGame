@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MoveCar : MonoBehaviour {
-	int dir // -1 = goes to left, 1 goes to right
+	public static int dir // -1 = goes to left, 1 goes to right
 
 	// Use this for initialization
 	void Start () {
