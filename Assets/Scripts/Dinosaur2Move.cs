@@ -107,13 +107,13 @@ public class Dinosaur2Move : MonoBehaviour
         if (col.gameObject.tag == "Border")
         {
             isGrounded = true;
-            //spiketimer = 20;
-	    transform.Translate(Vector2.left * 0);
-	    transform.Translate(Vector2.right * 0);
-	    transform.Translate(Vector2.down * 0);
-	    transform.Translate(Vector2.up * 0);
+            //spiketimer = 20; not needed
 	    
         }
+	if (col.gameObject.tag == "Box")
+        {
+            isGrounded = true;  
+	}
         if (col.gameObject.tag == "Finish")
         {
             endgame("You win! Press esc to quit");
