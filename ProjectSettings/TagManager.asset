@@ -16,6 +16,7 @@ TagManager:
   - Background
   - Box
   - Checkpoint
+  - startscreen
   layers:
   - Default
   - TransparentFX
