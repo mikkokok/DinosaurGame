@@ -13,10 +13,6 @@ TagManager:
   - Text
   - Mushroom
   - Car
-  - Background
-  - Box
-  - Checkpoint
-  - startscreen
   layers:
   - Default
   - TransparentFX

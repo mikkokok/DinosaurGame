@@ -80,7 +80,6 @@
     <Compile Include="Assets\Scripts\Dinosaur2Move.cs" />
     <Compile Include="Assets\Scripts\DinosaurGirl.cs" />
     <Compile Include="Assets\UpdateInfo.cs" />
-    <Compile Include="Assets\movement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

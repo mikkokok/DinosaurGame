@@ -8,20 +8,18 @@ public class UpdateInfo : MonoBehaviour
 
     public static Text text;
     public static bool game_end = false;
-    public static bool game_is_on = false;
     // Use this for initialization
     void Start()
     {
         text = GetComponent<Text>();
-        //text.text = "Coins: " + CoinCounter.GetCoin() + "Candies: " + CoinCounter.GetCandy();
-        text.text = "";
+        text.text = "Coins: " + CoinCounter.GetCoin() + "Candies: " + CoinCounter.GetCandy();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (game_is_on && game_end != true)
+        if (game_end != true)
         {
             UpdateText();
         }
@@ -36,9 +34,5 @@ public class UpdateInfo : MonoBehaviour
         text.fontSize = 15;
         text.color = Color.red;
         text.text = endgame;
-    }
-    public static void startgame()
-    {
-        game_is_on = true;
     }
 }
