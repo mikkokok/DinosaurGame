@@ -36,7 +36,7 @@ public class Dinosaur2Move : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return))
         {
-            DestroyObject(GameObject.Find("startscreen"));
+            DestroyObject(GameObject.Find("Startscreen"));
             GetComponent<SpriteRenderer>().enabled = true;
             game_is_on = true;
             body.constraints = RigidbodyConstraints2D.None;
