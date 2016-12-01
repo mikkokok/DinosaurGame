@@ -12,7 +12,7 @@ public class Dinosaur2Move : MonoBehaviour
     private bool isFacingRight = true; // Assume player is facing right
     private int returnAnimRate = 3; // How many frames before animation stops
     private int spiketimer = 5; // How many frames before reducing candy again
-    public static bool game_is_on = true; // Game is truly running at the start
+    public static bool game_is_on = false; // Game is truly running at the start
     private Animator animations;
     Rigidbody2D body;
 
@@ -22,13 +22,30 @@ public class Dinosaur2Move : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animations = GetComponent<Animator>();
         isFacing("right");
+        GetComponent<SpriteRenderer>().enabled = false;
+        body.constraints = RigidbodyConstraints2D.FreezePositionY;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (game_is_on) { 
-        Movement();
+        // Start or not to start
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return))
+        {
+            DestroyObject(GameObject.Find("startscreen"));
+            GetComponent<SpriteRenderer>().enabled = true;
+            game_is_on = true;
+            body.constraints = RigidbodyConstraints2D.None;
+            body.constraints = RigidbodyConstraints2D.FreezeRotation;
+            UpdateInfo.startgame();
+        }
+        if (game_is_on)
+        {
+            Movement();
         }
         gameSpeed = 100;
         returnAnimRate--;
@@ -36,9 +53,10 @@ public class Dinosaur2Move : MonoBehaviour
         {
             setIdle();
         }
-	   if (spiketimer > 0){
-		spiketimer--;
-		}
+        if (spiketimer > 0)
+        {
+            spiketimer--;
+        }
     }
 
     void Movement()
@@ -95,19 +113,16 @@ public class Dinosaur2Move : MonoBehaviour
                 setAnim("IsJumpingLeft");
             }
         }
-        // Exiting game
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
     } // movement
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Border")
         {
             isGrounded = true;
-            spiketimer = 20;
+        }
+        if (col.gameObject.tag == "Box")
+        {
+            isGrounded = true;
         }
         if (col.gameObject.tag == "Finish")
         {
@@ -123,12 +138,13 @@ public class Dinosaur2Move : MonoBehaviour
         {
             CoinCounter.AddCandy();
         }
-	   if (col.gameObject.tag == "Mushroom")
+        if (col.gameObject.tag == "Mushroom")
         {
-		 Debug.Log("Spiketimer: "+spiketimer);
-            if (spiketimer <= 0) { 
-            CoinCounter.ReduceCandy();
-            spiketimer = 20;
+            Debug.Log("Spiketimer: " + spiketimer);
+            if (spiketimer <= 0)
+            {
+                CoinCounter.ReduceCandy();
+                spiketimer = 20;
             }
 
         }
@@ -136,10 +152,11 @@ public class Dinosaur2Move : MonoBehaviour
         if (col.gameObject.tag == "Spikes")
         {
             isGrounded = true;
-            Debug.Log("Spiketimer: "+spiketimer);
-            if (spiketimer <= 0) { 
-            CoinCounter.ReduceCandy();
-            spiketimer = 20;
+            Debug.Log("Spiketimer: " + spiketimer);
+            if (spiketimer <= 0)
+            {
+                CoinCounter.ReduceCandy();
+                spiketimer = 20;
             }
         }
     }
