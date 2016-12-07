@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UpdateInfo : MonoBehaviour
 {
-
     public static Text text;
     public static bool game_end = false;
     public static bool game_is_on = false;
@@ -16,6 +15,7 @@ public class UpdateInfo : MonoBehaviour
         //text.text = "Coins: " + CoinCounter.GetCoin() + "Candies: " + CoinCounter.GetCandy();
         text.text = "";
 
+
     }
 
     // Update is called once per frame
@@ -23,12 +23,13 @@ public class UpdateInfo : MonoBehaviour
     {
         if (game_is_on && game_end != true)
         {
+            //Debug.Log("Text updating");
             UpdateText();
         }
     }
     public static void UpdateText()
     {
-        // Debug.Log("Text updating");
+        //Debug.Log("Text updating");
         text.text = "Coins: " + CoinCounter.GetCoin() + " Candies: " + CoinCounter.GetCandy();
     }
     public static void UpdateText(string endgame)

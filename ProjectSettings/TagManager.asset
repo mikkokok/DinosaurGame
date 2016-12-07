@@ -17,6 +17,7 @@ TagManager:
   - Box
   - Checkpoint
   - startscreen
+  - failurescreen
   layers:
   - Default
   - TransparentFX

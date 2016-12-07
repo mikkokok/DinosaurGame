@@ -57,6 +57,10 @@ public class Dinosaur2Move : MonoBehaviour
         {
             spiketimer--;
         }
+        if (Input.GetKey(KeyCode.R))
+        {
+           
+        }
     }
 
     void Movement()
@@ -165,6 +169,7 @@ public class Dinosaur2Move : MonoBehaviour
         game_is_on = false;
         UpdateInfo.game_end = true;
         UpdateInfo.UpdateText(input);
+        GameOverScreen.ShowEnd();
     }
     private void setIdle()
     {

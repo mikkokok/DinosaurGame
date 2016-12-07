@@ -76,6 +76,7 @@
     <Compile Include="Assets\CandyHandle.cs" />
     <Compile Include="Assets\CoinCounter.cs" />
     <Compile Include="Assets\CoinHandle.cs" />
+    <Compile Include="Assets\GameOverScreen.cs" />
     <Compile Include="Assets\MoveCar.cs" />
     <Compile Include="Assets\Scripts\Dinosaur2Move.cs" />
     <Compile Include="Assets\Scripts\DinosaurGirl.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Assets\movement.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\MedusaHandle.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
