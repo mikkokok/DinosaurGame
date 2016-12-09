@@ -14,8 +14,6 @@ public class UpdateInfo : MonoBehaviour
         text = GetComponent<Text>();
         //text.text = "Coins: " + CoinCounter.GetCoin() + "Candies: " + CoinCounter.GetCandy();
         text.text = "";
-
-
     }
 
     // Update is called once per frame

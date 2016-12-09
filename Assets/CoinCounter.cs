@@ -20,7 +20,7 @@ public class CoinCounter : MonoBehaviour
     public static void AddCandy()
     {
         candycount++;
-        Debug.Log("Candy collected"); // For debugging
+        //Debug.Log("Candy collected"); // For debugging
     }
     public static void ReduceCandy()
     {
@@ -29,7 +29,7 @@ public class CoinCounter : MonoBehaviour
         {
             Dinosaur2Move.endgame("All candies lost, you lose :(");
         }
-        Debug.Log("Candy reduced: amount "+candycount); // For debugging
+        //Debug.Log("Candy reduced: amount "+candycount); // For debugging
     }
     public static string GetCandy()
     {
@@ -60,5 +60,9 @@ public class CoinCounter : MonoBehaviour
     public static string GetCoin()
     {
         return coincount.ToString();
+    }
+    public static int GetCoinInt()
+    {
+        return coincount;
     }
 } // CoinCounter

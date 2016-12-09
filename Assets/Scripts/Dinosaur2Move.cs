@@ -59,7 +59,7 @@ public class Dinosaur2Move : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.R))
         {
-           
+            //EndingScreen.ShowEndScreenA(); // For testing
         }
     }
 
@@ -130,12 +130,26 @@ public class Dinosaur2Move : MonoBehaviour
         }
         if (col.gameObject.tag == "Finish")
         {
-            endgame("You win! Press esc to quit");
+            game_is_on = false;
+
+            if (CoinCounter.GetCoinInt() <= 20)
+            {
+                EndingScreen.ShowEndScreenA();
+            }
+            if (CoinCounter.GetCoinInt() >= 20 && CoinCounter.GetCoinInt() < 50)
+            {
+                EndingScreen.ShowEndScreenB();
+            }
+            if (CoinCounter.GetCoinInt() >= 50)
+            {
+                EndingScreen.ShowEndScreenC();
+            }
+            //endgame("You win! Press esc to quit");
             //Debug.Log("You win!");
         }
         if (col.gameObject.tag == "Car")
         {
-            endgame("You lose! Press esc to quit");
+            CoinCounter.ReduceCandy();
             Debug.Log("You lose");
         }
         if (col.gameObject.tag == "Candy")
@@ -150,9 +164,7 @@ public class Dinosaur2Move : MonoBehaviour
                 CoinCounter.ReduceCandy();
                 spiketimer = 20;
             }
-
         }
-
         if (col.gameObject.tag == "Spikes")
         {
             isGrounded = true;
@@ -169,7 +181,7 @@ public class Dinosaur2Move : MonoBehaviour
         game_is_on = false;
         UpdateInfo.game_end = true;
         UpdateInfo.UpdateText(input);
-        GameOverScreen.ShowEnd();
+        EndingScreen.ShowEnd();
     }
     private void setIdle()
     {
