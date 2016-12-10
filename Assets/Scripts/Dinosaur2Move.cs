@@ -5,7 +5,7 @@ using System;
 public class Dinosaur2Move : MonoBehaviour
 {
 
-    private float gameSpeed = 100;
+    private float gameSpeed = 150;
     //private float maxSpeed = 40;
     private float maxSpeedMultiplier = 2;
     private bool isGrounded = true;
@@ -47,7 +47,7 @@ public class Dinosaur2Move : MonoBehaviour
         {
             Movement();
         }
-        gameSpeed = 100;
+        gameSpeed = 150;
         returnAnimRate--;
         if (returnAnimRate == 0)
         {
@@ -120,11 +120,7 @@ public class Dinosaur2Move : MonoBehaviour
     } // movement
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Border")
-        {
-            isGrounded = true;
-        }
-        if (col.gameObject.tag == "Box")
+        if (col.gameObject.tag == "Border" || col.gameObject.tag == "Box")
         {
             isGrounded = true;
         }
@@ -144,13 +140,10 @@ public class Dinosaur2Move : MonoBehaviour
             {
                 EndingScreen.ShowEndScreenC();
             }
-            //endgame("You win! Press esc to quit");
-            //Debug.Log("You win!");
         }
         if (col.gameObject.tag == "Car")
         {
             CoinCounter.ReduceCandy();
-            Debug.Log("You lose");
         }
         if (col.gameObject.tag == "Candy")
         {
@@ -158,17 +151,11 @@ public class Dinosaur2Move : MonoBehaviour
         }
         if (col.gameObject.tag == "Mushroom")
         {
-            Debug.Log("Spiketimer: " + spiketimer);
-            if (spiketimer <= 0)
-            {
-                CoinCounter.ReduceCandy();
-                spiketimer = 20;
-            }
+            CoinCounter.ReduceCandy();
         }
         if (col.gameObject.tag == "Spikes")
         {
             isGrounded = true;
-            Debug.Log("Spiketimer: " + spiketimer);
             if (spiketimer <= 0)
             {
                 CoinCounter.ReduceCandy();
@@ -211,5 +198,4 @@ public class Dinosaur2Move : MonoBehaviour
             animations.SetBool("IsFaceToRight", false);
         }
     }
-
 }

@@ -19,7 +19,7 @@ public class UpdateInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (game_is_on && game_end != true)
+        if (game_is_on && game_end == false)
         {
             //Debug.Log("Text updating");
             UpdateText();
