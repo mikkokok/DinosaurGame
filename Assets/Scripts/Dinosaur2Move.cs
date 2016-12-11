@@ -61,6 +61,22 @@ public class Dinosaur2Move : MonoBehaviour
         {
             //EndingScreen.ShowEndScreenA(); // For testing
         }
+        if (Input.GetKey(KeyCode.P))
+        {
+            EndingScreen.ShowEndScreenA(); // For testing
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            EndingScreen.ShowEndScreenB(); // For testing
+        }
+        if (Input.GetKey(KeyCode.I))
+        {
+            EndingScreen.ShowEndScreenC(); // For testing
+        }
+        if (Input.GetKey(KeyCode.U))
+        {
+            CoinCounter.AddCandy();
+        }
     }
 
     void Movement()
