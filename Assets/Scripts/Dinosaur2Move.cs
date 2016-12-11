@@ -91,6 +91,7 @@ public class Dinosaur2Move : MonoBehaviour
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isGrounded)
         {
             setIdle();
+            body.velocity = new Vector2(body.velocity.y, 0);
             returnAnimRate = 3;
             isGrounded = false;
             body.AddForce(new Vector2(0, 180), ForceMode2D.Impulse);
