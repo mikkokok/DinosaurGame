@@ -8,6 +8,7 @@ public class EndingScreen : MonoBehaviour
     public static GameObject endingscreena;
     public static GameObject endingscreenb;
     public static GameObject endingscreenc;
+    public static GameObject instructionscreen;
     // Use this for initialization
     void Start()
     {
@@ -19,6 +20,8 @@ public class EndingScreen : MonoBehaviour
         endingscreenb.SetActive(false);
         endingscreenc = GameObject.Find("EndscreenC");
         endingscreenc.SetActive(false);
+        instructionscreen = GameObject.Find("Instructionscreen");
+        instructionscreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,5 +47,12 @@ public class EndingScreen : MonoBehaviour
     {
         //Debug.Log("Showing end screen C");
         endingscreenc.SetActive(true);
+    }
+    public static void ShowInsScreen(bool showing)
+    {
+        if (showing)
+            instructionscreen.SetActive(true);
+        if (!showing)
+            instructionscreen.SetActive(false);
     }
 }

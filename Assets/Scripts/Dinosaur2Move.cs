@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Diagnostics;
 
 public class Dinosaur2Move : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class Dinosaur2Move : MonoBehaviour
     //private float maxSpeed = 40;
     private float maxSpeedMultiplier = 2;
     private bool isGrounded = true;
+    private bool StartIsShowing = true;
     private bool isFacingRight = true; // Assume player is facing right
     private int returnAnimRate = 3; // How many frames before animation stops
     private int spiketimer = 5; // How many frames before reducing candy again
     public static bool game_is_on = false; // Game is truly running at the start
+    private static Stopwatch screenwatch = new Stopwatch(); // Timer to get the screen properly running
     private Animator animations;
     Rigidbody2D body;
 
@@ -34,14 +37,30 @@ public class Dinosaur2Move : MonoBehaviour
         {
             Application.Quit();
         }
-        if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return))
+        if (StartIsShowing && Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return))
         {
+            if (!screenwatch.IsRunning)
+            {
+                //UnityEngine.Debug.Log("Starting watch");
+                screenwatch.Start();
+            }
             DestroyObject(GameObject.Find("Startscreen"));
-            GetComponent<SpriteRenderer>().enabled = true;
-            game_is_on = true;
-            body.constraints = RigidbodyConstraints2D.None;
-            body.constraints = RigidbodyConstraints2D.FreezeRotation;
-            UpdateInfo.startgame();
+            StartIsShowing = false;
+            EndingScreen.ShowInsScreen(true);
+        }
+        if (!StartIsShowing && Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return))
+        {
+            //UnityEngine.Debug.Log("Watch: "+screenwatch.Elapsed);
+            if (screenwatch.Elapsed.Seconds >= 1)
+            {
+                EndingScreen.ShowInsScreen(false);
+                GetComponent<SpriteRenderer>().enabled = true;
+                game_is_on = true;
+                body.constraints = RigidbodyConstraints2D.None;
+                body.constraints = RigidbodyConstraints2D.FreezeRotation;
+                UpdateInfo.startgame();
+                screenwatch.Stop();
+            }
         }
         if (game_is_on)
         {
